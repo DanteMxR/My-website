@@ -95,6 +95,7 @@ body {
   
   header nav button.change-mood,
   header nav a {
+    white-space: nowrap;
       flex: 0;
   }
   
@@ -179,18 +180,19 @@ body {
       text-transform: uppercase;
       font-size: 1em;
   }
-  
-  .right-info .design-description h2 {
+  .design-description {
+    font-family: "Jersey 15", serif;
+    margin-top: 5vh;
+    font-size: 2vh;
+    
+  }
+  .design-description h2 {
       font-size: 1.5em;
       margin: 0;
       line-height: 1.1;
       letter-spacing: 1px;
   }
-  .design-description {
-    font-size: 2vh;
-  }
-  
-  .right-info .design-description p {
+  .design-description p {
       font-size: 0.9em;
       margin: 20px 0 30px;
       font-weight: 400;
