@@ -51,7 +51,7 @@
 }
 /* Базовые стили */
 body {
-    font-family: sans-serif;
+    font-family: "Jost", serif;
     margin: 0;
     padding: 0;
     background-color: #000; /* Тёмный фон */
@@ -182,6 +182,7 @@ body {
       font-size: 1em;
   }
   .design-description {
+    font-family: "Jost", serif;
     margin-top: 5vh;
     font-size: 2.2vh;
     
@@ -246,6 +247,7 @@ body {
       }
   
     .main-container h1 {
+      font-family: "Jost", serif;
           font-size: 3em;
       }
     .main-container > p {
