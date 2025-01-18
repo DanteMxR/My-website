@@ -32,3 +32,28 @@ window.addEventListener('scroll', () => {
 
     lastScrollTop = currentScroll;
 });
+function smoothScroll() {
+    let isScrolling = false;
+
+    window.addEventListener('wheel', (e) => {
+        if (isScrolling) return;
+
+        isScrolling = true;
+        const scrollAmount = e.deltaY > 0 ? 100 : -100; // Направление прокрутки
+        const targetPosition = window.scrollY + scrollAmount;
+
+        // Плавная анимация прокрутки
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+
+        // Завершаем анимацию после её завершения
+        setTimeout(() => {
+            isScrolling = false;
+        }, 350); // Длительность анимации (можно подстроить)
+    });
+}
+
+// Инициализация плавной прокрутки
+smoothScroll();
