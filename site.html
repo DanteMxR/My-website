@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Базовый сайт</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
@@ -18,9 +17,30 @@
             width: 10px;
             height: 10px;
             background-color: white;
-            pointer-events: none; /* Чтобы квадрат не мешал кликам */
+            pointer-events: none;
             border-radius: 2px;
-            transition: transform 0.1s ease-out; /* Плавное движение */
+            transition: transform 0.1s ease-out;
+        }
+    
+        .pixel {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: explode 0.6s forwards;
+        }
+    
+        @keyframes explode {
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.5) translate(var(--dx), var(--dy));
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -31,8 +51,7 @@
         <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGh1NzF0dDEwMTdpa2Y5cmFhOGp1YjQ5aG4yZzEwOWQwb3B5czZrYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pkfWxD1OWjwhnpF2Rb/giphy.gif" alt="Загрузка..." id="loader">
         <div class="sixtyfour-load" id="loading-text">Loading</div>
     </div>
-
-    <header>
+    <header class="hidden">
         <div class="container header-container">
             <div class="logo">Dante</div>
             <nav>
@@ -55,8 +74,8 @@
                     <a href="#">Telegram</a>
                 </div>
             </div>
-            <div class="clarisse">
-                <div class="clarisse-text">
+            <div class="dante">
+                <div class="dante-text">
                     <p>■ HELLO I'M Dmitry</p>
                 </div>
                 <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTMxN3YxdGd4cjJqMHkyeDJhaDJwbG51dmQ4am9oaDA2MGRxemdsbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mBvUaCuDPEXNnIk2NK/giphy.gif" alt="clarisse" class="clarisse-img">
@@ -74,30 +93,63 @@
     </main>
 
     <script>
-        // Ссылка на квадрат
-        const cursor = document.getElementById('cursor');
+    const cursor = document.getElementById('cursor');
+    let mouseX = 0, mouseY = 0;
+    let squareX = 0, squareY = 0;
 
-        // Переменные для хранения текущего положения квадрата
-        let mouseX = 0, mouseY = 0;
-        let squareX = 0, squareY = 0;
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
 
-        // Слушаем событие движения мыши
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+    // Плавное движение квадрата
+    function animateSquare() {
+        squareX += (mouseX - squareX) * 0.1;
+        squareY += (mouseY - squareY) * 0.1;
+        cursor.style.transform = `translate(${squareX}px, ${squareY}px)`;
+        requestAnimationFrame(animateSquare);
+    }
 
-        // Плавно двигаем квадрат к позиции мыши
-        function animateSquare() {
-            squareX += (mouseX - squareX) * 0.1; // 0.1 — скорость отставания
-            squareY += (mouseY - squareY) * 0.1;
-
-            cursor.style.transform = `translate(${squareX}px, ${squareY}px)`;
-
-            requestAnimationFrame(animateSquare); // Постоянный вызов анимации
+    // Создание "пикселей" при клике
+    document.addEventListener('click', (e) => {
+        const numPixels = 20; // Количество пикселей
+        for (let i = 0; i < numPixels; i++) {
+            createPixel(e.clientX, e.clientY);
         }
+    });
 
-        animateSquare(); // Запускаем анимацию
-    </script>
+    // Функция для создания пикселей
+    function createPixel(x, y) {
+        const pixel = document.createElement('div');
+        pixel.classList.add('pixel');
+
+        // Генерация случайного направления для каждого пикселя
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 50 + 30; // Максимальная дистанция разбега
+
+        // Вычисление смещения по оси X и Y
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+
+        // Установка CSS переменных для анимации
+        pixel.style.setProperty('--dx', `${dx}px`);
+        pixel.style.setProperty('--dy', `${dy}px`);
+
+        // Устанавливаем начальную позицию пикселя
+        pixel.style.left = `${x - 2}px`; // Центрируем пиксель
+        pixel.style.top = `${y - 2}px`;
+
+        // Добавляем пиксель на страницу
+        document.body.appendChild(pixel);
+
+        // Удаляем пиксель после анимации
+        setTimeout(() => {
+            pixel.remove();
+        }, 600); // Длительность анимации
+    }
+
+    animateSquare();
+</script>
 </body>
+<script src="scripts.js"></script>
 </html>

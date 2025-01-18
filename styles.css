@@ -74,7 +74,17 @@ body {
     padding: 20px 0;
     font-family: "Jersey 15", serif;
     font-size: 3vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Чтобы хедер всегда был поверх остальных элементов */
+    background-color: transparent; /* Фон совпадает с основным стилем сайта */
+    transition: transform 0.3s ease; /* Для плавного появления/скрытия */
   }
+  .hidden {
+    display: none;
+}
   
   .header-container {
       display: flex;
@@ -214,7 +224,7 @@ body {
       letter-spacing: 2px;
   }
   
-  .clarisse {
+  .dante {
     grid-column: 2/3;
       display: flex;
       flex-direction: column;
@@ -223,12 +233,12 @@ body {
       margin-top: 10px;
   }
   
-  .clarisse .clarisse-text {
+  .dante .dante-text {
       font-size: 1.0em;
       text-transform: uppercase;
   }
   
-  .clarisse-img {
+  .dante-img {
     max-width: 500px;
       height: auto;
   }
@@ -259,12 +269,12 @@ body {
           margin-right: auto;
           margin-top: 50px;
       }
-      .clarisse {
+      .dante {
           position: static;
           align-items: center;
           margin-top: 30px;
       }
-      .clarisse-img {
+      .dante-img {
         max-width: 80px;
       }
   }
@@ -280,4 +290,3 @@ body {
     border-color: #fff;
       color: #fff;
   }
- 
