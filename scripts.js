@@ -1,3 +1,44 @@
+const changeMoodBtn = document.getElementById("changeMoodBtn");
+const body = document.body;
+
+// Список тем
+const themes = ["theme-dark", "theme-light", "theme-colorful"];
+let currentThemeIndex = 0; // Индекс текущей темы
+
+// Установить начальную тему
+body.classList.add(themes[currentThemeIndex]);
+
+changeMoodBtn.addEventListener("click", () => {
+    // Удаляем текущую тему
+    body.classList.remove(themes[currentThemeIndex]);
+
+    // Переходим к следующей теме
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+
+    // Применяем новую тему
+    body.classList.add(themes[currentThemeIndex]);
+});
+
+// Проверяем, есть ли сохранённая тема
+const savedTheme = localStorage.getItem("selectedTheme");
+if (savedTheme) {
+    body.classList.add(savedTheme);
+    currentThemeIndex = themes.indexOf(savedTheme);
+} else {
+    body.classList.add(themes[currentThemeIndex]);
+}
+
+// Сохраняем тему при переключении
+changeMoodBtn.addEventListener("click", () => {
+    body.classList.remove(themes[currentThemeIndex]);
+    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+    const newTheme = themes[currentThemeIndex];
+    body.classList.add(newTheme);
+    localStorage.setItem("selectedTheme", newTheme); // Сохраняем тему
+});
+
+
+
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader-container');
     const mainContent = document.getElementById('main-content');

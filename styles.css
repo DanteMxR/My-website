@@ -281,15 +281,62 @@ body {
         max-width: 80px;
       }
   }
-  /* Новые стили для чб режима */
-  body.dark-mode {
-    background-color: #000;
-    color: #fff;
-  }
-  body.dark-mode a {
-    color: #fff;
-  }
-  body.dark-mode .change-mood {
-    border-color: #fff;
-      color: #fff;
-  }
+/* Тёмная тема (по умолчанию) */
+body.theme-dark {
+  background-color: #000;
+  color: #fff;
+}
+
+body.theme-dark a {
+  color: #fff;
+}
+
+body.theme-dark .change-mood {
+  border-color: #fff;
+  color: #fff;
+}
+
+body.theme-dark .change-mood:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Светлая тема */
+body.theme-light {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+body.theme-light a {
+  color: #000;
+}
+
+body.theme-light .change-mood {
+  border-color: #000;
+  color: #000;
+}
+
+body.theme-light .change-mood:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Цветная тема */
+body.theme-colorful {
+  background-color: #ffefd5;
+  color: #8b0000;
+}
+
+body.theme-colorful a {
+  color: #8b0000;
+}
+
+body.theme-colorful .change-mood {
+  border-color: #8b0000;
+  color: #8b0000;
+}
+
+body.theme-colorful .change-mood:hover {
+  background-color: #8b0000;
+  color: #ffefd5;
+}
