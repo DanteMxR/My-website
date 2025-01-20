@@ -310,6 +310,12 @@ body.theme-light {
 body.theme-light a {
   color: #000;
 }
+body.theme-light h1 {
+  color: #000;
+}
+body.theme-light span {
+  color: #000;
+}
 
 body.theme-light .change-mood {
   border-color: #000;
@@ -330,7 +336,12 @@ body.theme-colorful {
 body.theme-colorful a {
   color: #8b0000;
 }
-
+body.theme-colorful h1 {
+  color: #8b0000;
+}
+body.theme-colorful span {
+  color: #8b0000;
+}
 body.theme-colorful .change-mood {
   border-color: #8b0000;
   color: #8b0000;
