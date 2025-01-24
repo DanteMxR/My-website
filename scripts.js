@@ -2,7 +2,15 @@ const changeMoodBtn = document.getElementById("changeMoodBtn");
 const body = document.body;
 
 // Список тем
-const themes = ["theme-dark", "theme-light", "theme-colorful"];
+const themes = [
+    "theme-dark", 
+    "theme-light", 
+    "theme-colorful",
+    "theme-blue",
+    "theme-green",
+    "theme-purple",
+    "theme-pink"
+];
 let currentThemeIndex = 0; // Индекс текущей темы
 
 // Установить начальную тему

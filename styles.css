@@ -283,6 +283,7 @@ body {
   }
 /* Тёмная тема (по умолчанию) */
 body.theme-dark {
+  --cursor-color: #ffffff;
   background-color: #000;
   color: #fff;
 }
@@ -303,6 +304,7 @@ body.theme-dark .change-mood:hover {
 
 /* Светлая тема */
 body.theme-light {
+  --cursor-color: #000000;
   background-color: #f0f0f0;
   color: #000;
 }
@@ -329,6 +331,7 @@ body.theme-light .change-mood:hover {
 
 /* Цветная тема */
 body.theme-colorful {
+  --cursor-color: #8b0000;
   background-color: #ffefd5;
   color: #8b0000;
 }
@@ -350,4 +353,98 @@ body.theme-colorful .change-mood {
 body.theme-colorful .change-mood:hover {
   background-color: #8b0000;
   color: #ffefd5;
+}
+
+/* Синяя тема */
+body.theme-blue {
+  --cursor-color: #00f3ff;
+  --main-bg: #001529;
+  --text-color: #e6f7ff;
+  --accent-color: #1890ff;
+  --hover-effect: linear-gradient(45deg, #096dd9, #00f3ff);
+  background: var(--main-bg);
+  color: var(--text-color);
+}
+
+body.theme-blue a {
+  color: var(--text-color);
+}
+
+body.theme-blue .change-mood {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background: rgba(24, 144, 255, 0.1);
+}
+
+body.theme-blue .change-mood:hover {
+  background: var(--hover-effect);
+  color: white;
+}
+
+/* Зеленая тема */
+body.theme-green {
+  --cursor-color: #52c41a;
+  --main-bg: #092b00;
+  --text-color: #f6ffed;
+  --accent-color: #73d13d;
+  --hover-effect: linear-gradient(45deg, #237804, #52c41a);
+  background: var(--main-bg);
+  color: var(--text-color);
+}
+
+body.theme-green .dante-img {
+  filter: hue-rotate(90deg);
+}
+
+body.theme-green .change-mood {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Фиолетовая тема */
+body.theme-purple {
+  --cursor-color: #9254de;
+  --main-bg: #130b2f;
+  --text-color: #efdbff;
+  --accent-color: #b37feb;
+  --hover-effect: linear-gradient(45deg, #391085, #9254de);
+  background: var(--main-bg);
+  color: var(--text-color);
+}
+
+body.theme-purple header {
+  text-shadow: 0 0 10px rgba(146, 84, 222, 0.5);
+}
+
+/* Розовая тема */
+body.theme-pink {
+  --cursor-color: #ff4d88;
+  --main-bg: #28001a;
+  --text-color: #fff0f6;
+  --accent-color: #ff85c0;
+  --hover-effect: linear-gradient(45deg, #c41d7f, #ff4d88);
+  background: var(--main-bg);
+  color: var(--text-color);
+}
+
+/* Общие улучшения для всех тем */
+header {
+  transition: all 0.5s ease;
+}
+
+.change-mood {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.change-mood:hover:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--hover-effect);
+  z-index: -1;
 }
