@@ -20,6 +20,7 @@
     pointer-events: none;
     border-radius: 2px;
     transition: transform 0.1s ease-out;
+    z-index: 1000;
 }
 
 .pixel {
@@ -56,7 +57,7 @@
             <div class="logo">Dante</div>
             <nav>
                 <div class="nav-center">
-                    <button class="change-mood" id="changeMoodBtn">change the mood</button>
+                    <button data-en="change-mood" data-ru="Изменить тему" class="change-mood" id="changeMoodBtn">change the mood</button>
                 </div>
                 <div class="nav-right">
                     <button class="change-mood" id="translateBtn" aria-label="Translate">
@@ -76,7 +77,7 @@
                 <span class="year">2002</span>
                 <span class="date">21.10</span>
             </div>
-            <h1 data-en="WEB DEVELOPER" data-ru="ВЕБ РАЗРАБОТЧИК">WEB DEVELOPER</h1>
+            <h1 class="pixel-glitch" data-en="WEB DEVELOPER" data-ru="ВЕБ РАЗРАБОТЧИК">WEB DEVELOPER</h1>
             <div class="right-info">
                 <div class="design-area"></div>
                 <div class="social-icons">

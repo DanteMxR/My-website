@@ -127,3 +127,24 @@ function smoothScroll() {
 }
 
 smoothScroll();
+
+const glitchText = document.querySelector('.pixel-glitch');
+        let isGlitching = false;
+
+        glitchText.addEventListener('mousemove', (e) => {
+            if (!isGlitching) {
+                isGlitching = true;
+                const baseX = e.clientX / window.innerWidth;
+                const baseY = e.clientY / window.innerHeight;
+                
+                glitchText.style.textShadow = `
+                    ${Math.random() * 4 - 2}px ${Math.random() * 4 - 2}px rgba(255,0,255,0.7),
+                    ${Math.random() * 4 - 2}px ${Math.random() * 4 - 2}px rgba(0,255,255,0.7)
+                `;
+                
+                setTimeout(() => {
+                    glitchText.style.textShadow = '';
+                    isGlitching = false;
+                }, 50);
+            }
+        });
