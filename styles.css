@@ -242,9 +242,19 @@ body {
   }
   
   .dante-img {
-    max-width: 500px;
-      height: auto;
-  }
+    width: 220px;       /* Фиксированная ширина */
+    height: 220px;      /* Фиксированная высота */
+    object-fit: cover;  /* Обрезка изображения по размеру контейнера */
+    object-position: center; /* Центрирование изображения */
+}
+
+/* Для мобильной версии */
+@media (max-width: 768px) {
+    .dante-img {
+        width: 250px;   /* Уменьшенный размер для мобильных */
+        height: 150px;
+    }
+}
   /* Адаптация для мобильных устройств */
   @media (max-width: 768px) {
       .main-container {
@@ -276,9 +286,6 @@ body {
           position: static;
           align-items: center;
           margin-top: 30px;
-      }
-      .dante-img {
-        max-width: 80px;
       }
   }
 /* Тёмная тема (по умолчанию) */

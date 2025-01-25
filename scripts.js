@@ -1,7 +1,8 @@
 const changeMoodBtn = document.getElementById("changeMoodBtn");
 const body = document.body;
+const danteImg = document.querySelector('.dante-img');
 
-// Список тем
+// Список тем и соответствующих гифок
 const themes = [
     "theme-dark", 
     "theme-light", 
@@ -11,76 +12,72 @@ const themes = [
     "theme-purple",
     "theme-pink"
 ];
-let currentThemeIndex = 0; // Индекс текущей темы
 
-// Установить начальную тему
-body.classList.add(themes[currentThemeIndex]);
+const gifUrls = [
+    "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTMxN3YxdGd4cjJqMHkyeDJhaDJwbG51dmQ4am9oaDA2MGRxemdsbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mBvUaCuDPEXNnIk2NK/giphy.gif",
+    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTRxOG82cmd5ZnAwZ2tiaHdocm43YjF3YnBnZWw4bmk4a2dpZDEwbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tqU9tTWnImTJe/giphy.gif",
+    "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3JkcjJ3OW9icGU2ZThkZ2Nnd205dXZodGw4MzE2cTRieDJ6Nng4MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dH4eBrNQXB8S4/giphy.gif",
+    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmUxdW82emMzNXhoMGdoc2wyY2d0OHlvMWN4Z3RqYjF3aDhrcHdqYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VGHtpsS3UJNRK/giphy.gif",
+    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXBrd3F4NmRyYmthYnBlaWN0dW44bnNreHN1dzJ1ZzVuY2ZraTY5bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8wvYd8bWGKPao/giphy.gif",
+    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWI3cjhmcGhhYThyeHgydmkya3EyZHZmdTlqZHp4MWpkM3BiNWxseSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aQwvKKi4Lv3t63nZl9/giphy.gif",
+    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGlkcjVlaW9wbzZtMXNld29uMmo4c2hoNjZ2Y3pscm9vZjYzcHIyaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wr7oA0rSjnWuiLJOY5/giphy.gif"
+];
 
-changeMoodBtn.addEventListener("click", () => {
-    // Удаляем текущую тему
-    body.classList.remove(themes[currentThemeIndex]);
+let currentThemeIndex = 0;
 
-    // Переходим к следующей теме
-    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+// Функция обновления гифки
+function updateGif() {
+    danteImg.src = gifUrls[currentThemeIndex];
+}
 
-    // Применяем новую тему
-    body.classList.add(themes[currentThemeIndex]);
-});
-
-// Проверяем, есть ли сохранённая тема
+// Проверяем сохранённую тему
 const savedTheme = localStorage.getItem("selectedTheme");
 if (savedTheme) {
-    body.classList.add(savedTheme);
     currentThemeIndex = themes.indexOf(savedTheme);
+    body.classList.add(savedTheme);
+    updateGif();
 } else {
     body.classList.add(themes[currentThemeIndex]);
 }
 
-// Сохраняем тему при переключении
+// Обработчик клика для смены темы
 changeMoodBtn.addEventListener("click", () => {
     body.classList.remove(themes[currentThemeIndex]);
     currentThemeIndex = (currentThemeIndex + 1) % themes.length;
     const newTheme = themes[currentThemeIndex];
     body.classList.add(newTheme);
-    localStorage.setItem("selectedTheme", newTheme); // Сохраняем тему
+    localStorage.setItem("selectedTheme", newTheme);
+    updateGif();
 });
-
-
 
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader-container');
     const mainContent = document.getElementById('main-content');
-    const header = document.querySelector('header'); // Ссылка на header
+    const header = document.querySelector('header');
 
     setTimeout(() => {
-        header.classList.remove('hidden'); // Показать header после загрузки
+        header.classList.remove('hidden');
         loader.style.display = 'none';
         mainContent.style.display = 'block';
-    }, 3000); // Задержка в 3 секунды
-});
-
-// Темная тема
-document.querySelector(".change-mood").addEventListener("click", function() {
-    document.body.classList.toggle('dark-mode');
+    }, 3000);
 });
 
 // Анимация header при прокрутке
-let lastScrollTop = 0; // Последнее положение прокрутки
+let lastScrollTop = 0;
 const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
     if (currentScroll > lastScrollTop) {
-        // Прокрутка вниз
         header.style.transform = 'translateY(-100%)';
     } else {
-        // Прокрутка вверх
         header.style.transform = 'translateY(0)';
     }
 
     lastScrollTop = currentScroll;
 });
+
 function smoothScroll() {
     let isScrolling = false;
 
@@ -88,21 +85,18 @@ function smoothScroll() {
         if (isScrolling) return;
 
         isScrolling = true;
-        const scrollAmount = e.deltaY > 0 ? 100 : -100; // Направление прокрутки
+        const scrollAmount = e.deltaY > 0 ? 100 : -100;
         const targetPosition = window.scrollY + scrollAmount;
 
-        // Плавная анимация прокрутки
         window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
         });
 
-        // Завершаем анимацию после её завершения
         setTimeout(() => {
             isScrolling = false;
-        }, 350); // Длительность анимации (можно подстроить)
+        }, 350);
     });
 }
 
-// Инициализация плавной прокрутки
 smoothScroll();
