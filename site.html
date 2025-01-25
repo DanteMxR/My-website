@@ -62,9 +62,8 @@
                 <div class="nav-right">
                     <button class="change-mood" id="translateBtn" aria-label="Translate">
                         <svg class="translate-icon" viewBox="0 0 24 24" aria-hidden="true">
-                          <!-- Иконка глобуса с буквами EN/RU -->
+
                           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                          <!-- Динамическое изменение текста через JavaScript -->
                         </svg>
                       </button>
                 </div>
@@ -120,7 +119,7 @@
         mouseY = e.clientY;
     });
 
-    // Плавное движение квадрата
+   
     function animateSquare() {
         squareX += (mouseX - squareX) * 0.1;
         squareY += (mouseY - squareY) * 0.1;
@@ -128,22 +127,22 @@
         requestAnimationFrame(animateSquare);
     }
 
-    // Создание "пикселей" при клике
+  
     document.addEventListener('click', (e) => {
-        const numPixels = 20; // Количество пикселей
+        const numPixels = 140; 
         for (let i = 0; i < numPixels; i++) {
             createPixel(e.clientX, e.clientY);
         }
     });
 
-    // Функция для создания пикселей
+    
     function createPixel(x, y) {
         const pixel = document.createElement('div');
         pixel.classList.add('pixel');
 
         // Генерация случайного направления для каждого пикселя
         const angle = Math.random() * 2 * Math.PI;
-        const distance = Math.random() * 50 + 30; // Максимальная дистанция разбега
+        const distance = Math.random() * 100 + 60; // Максимальная дистанция разбега
 
         // Вычисление смещения по оси X и Y
         const dx = Math.cos(angle) * distance;
@@ -163,7 +162,7 @@
         // Удаляем пиксель после анимации
         setTimeout(() => {
             pixel.remove();
-        }, 600); // Длительность анимации
+        }, 900); // Длительность анимации
     }
 
     animateSquare();
