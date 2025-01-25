@@ -89,11 +89,61 @@ body {
     display: none;
 }
   
+ /* Header styles */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+nav {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-right {
+  margin-left: auto;
+}
+
+/* Для мобильной версии */
+@media (max-width: 768px) {
   .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
   }
+  
+  .nav-center {
+      position: static;
+      transform: none;
+      order: 2;
+      width: 100%;
+      text-align: center;
+      margin: 10px 0;
+  }
+  
+  .nav-right {
+      order: 3;
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+  }
+  
+  .logo {
+      order: 1;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px;
+  }
+}
   
   .logo {
     font-size: 3.5vh;
@@ -154,7 +204,7 @@ body {
   }
   
   .main-container h1 {
-      font-size: 8.8em;
+      font-size: 7.8em;
       margin: 0;
       line-height: 1;
       letter-spacing: -5px;
@@ -454,4 +504,61 @@ header {
   height: 100%;
   background: var(--hover-effect);
   z-index: -1;
+}
+header nav button#translateBtn {
+  margin-left: 20px;
+  padding: 5px 10px;
+  border: 1px solid var(--accent-color);
+  border-radius: 15px;
+  background: none;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+header nav button#translateBtn:hover {
+  background-color: var(--accent-color);
+  color: var(--main-bg);
+}
+/* Стили для иконки перевода */
+#translateBtn {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.translate-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+#translateBtn:hover .translate-icon {
+  transform: rotate(15deg);
+}
+
+/* Цвета иконки */
+body.theme-dark .translate-icon {
+  fill: #fff;
+}
+body.theme-light .translate-icon {
+  fill: #000;
+}
+body.theme-colorful .translate-icon {
+  fill: #8b0000;
+}
+body.theme-blue .translate-icon {
+  fill: #fff;
+}
+body.theme-green .translate-icon {
+  fill: #fff;
+}
+body.theme-purple .translate-icon {
+  fill: #fff;
+}
+body.theme-pink .translate-icon {
+  fill: #fff;
 }

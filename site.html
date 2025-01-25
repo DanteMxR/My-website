@@ -55,7 +55,18 @@
         <div class="container header-container">
             <div class="logo">Dante</div>
             <nav>
-                <button class="change-mood" id="changeMoodBtn">change the mood</button>
+                <div class="nav-center">
+                    <button class="change-mood" id="changeMoodBtn">change the mood</button>
+                </div>
+                <div class="nav-right">
+                    <button class="change-mood" id="translateBtn" aria-label="Translate">
+                        <svg class="translate-icon" viewBox="0 0 24 24" aria-hidden="true">
+                          <!-- Иконка глобуса с буквами EN/RU -->
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                          <!-- Динамическое изменение текста через JavaScript -->
+                        </svg>
+                      </button>
+                </div>
             </nav>
         </div>
     </header>
@@ -65,7 +76,7 @@
                 <span class="year">2002</span>
                 <span class="date">21.10</span>
             </div>
-            <h1>WEB DEVELOPER</h1>
+            <h1 data-en="WEB DEVELOPER" data-ru="ВЕБ РАЗРАБОТЧИК">WEB DEVELOPER</h1>
             <div class="right-info">
                 <div class="design-area"></div>
                 <div class="social-icons">
@@ -76,15 +87,17 @@
             </div>
             <div class="dante">
                 <div class="dante-text">
-                    <p>■ HELLO I'M Dmitry</p>
+                    <p data-en="■ HELLO I'M Dmitry" data-ru="■ ПРИВЕТ, Я ДМИТРИЙ">■ HELLO I'M Dmitry</p>
                 </div>
                 <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTMxN3YxdGd4cjJqMHkyeDJhaDJwbG51dmQ4am9oaDA2MGRxemdsbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mBvUaCuDPEXNnIk2NK/giphy.gif" alt="dante" class="dante-img">
             </div>
             <div class="design-description">
-                <h2>UI-UX & WEB</h2>
-                <h2>DEVELOP</h2>
-                <p>I am a Frontend developer who turns your ideas into working websites.
-                  in my projects I use JavaScript, React, Redux, Bootstrap and much more</p>
+                <h2 data-en="FRONTEND" data-ru="FRONTEND">FRONTEND</h2>
+                <h2 data-en="DEVELOP" data-ru="РАЗРАБОТКА">DEVELOP</h2>
+                <p data-en="I am a Frontend developer who turns your ideas into working websites. In my projects I use JavaScript, React, Redux, Bootstrap and much more" 
+                data-ru="Я фронтенд-разработчик, превращающий ваши идеи в рабочие веб-сайты. В своих проектах использую JavaScript, React, Redux, Bootstrap и другие современные технологии">
+                I am a Frontend developer who turns your ideas into working websites. In my projects I use JavaScript, React, Redux, Bootstrap and much more
+                </p>
             </div>
             <div class="giphy-pashalka">
               

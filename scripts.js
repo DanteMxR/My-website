@@ -1,6 +1,8 @@
 const changeMoodBtn = document.getElementById("changeMoodBtn");
 const body = document.body;
 const danteImg = document.querySelector('.dante-img');
+const translateBtn = document.getElementById('translateBtn');
+const langText = document.getElementById('langText');
 
 // Список тем и соответствующих гифок
 const themes = [
@@ -24,6 +26,7 @@ const gifUrls = [
 ];
 
 let currentThemeIndex = 0;
+let isRussian = false;
 
 // Функция обновления гифки
 function updateGif() {
@@ -50,6 +53,33 @@ changeMoodBtn.addEventListener("click", () => {
     updateGif();
 });
 
+// Функция перевода
+function toggleLanguage() {
+    isRussian = !isRussian;
+    document.querySelectorAll('[data-en], [data-ru]').forEach(element => {
+        if (isRussian) {
+            if (element.dataset.ru) element.textContent = element.dataset.ru;
+        } else {
+            if (element.dataset.en) element.textContent = element.dataset.en;
+        }
+    });
+    
+    // Обновление иконки
+    langText.textContent = isRussian ? 'RU' : 'EN';
+    translateBtn.setAttribute('aria-label', isRussian ? 'Switch to English' : 'Переключить на Русский');
+    localStorage.setItem('language', isRussian ? 'ru' : 'en');
+}
+
+// Проверка сохранённого языка
+const savedLang = localStorage.getItem('language');
+if (savedLang === 'ru') {
+    isRussian = true;
+    toggleLanguage();
+}
+
+// Обработчики событий
+translateBtn.addEventListener('click', toggleLanguage);
+
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader-container');
     const mainContent = document.getElementById('main-content');
@@ -64,20 +94,17 @@ window.addEventListener('load', () => {
 
 // Анимация header при прокрутке
 let lastScrollTop = 0;
-const header = document.querySelector('header');
+const headerElement = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-
-    if (currentScroll > lastScrollTop) {
-        header.style.transform = 'translateY(-100%)';
-    } else {
-        header.style.transform = 'translateY(0)';
-    }
-
+    headerElement.style.transform = currentScroll > lastScrollTop 
+        ? 'translateY(-100%)' 
+        : 'translateY(0)';
     lastScrollTop = currentScroll;
 });
 
+// Плавная прокрутка
 function smoothScroll() {
     let isScrolling = false;
 
