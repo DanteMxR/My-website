@@ -377,6 +377,7 @@ body.theme-dark {
   --cursor-color: #ffffff;
   background-color: #000;
   color: #fff;
+    --accent-color: #fff;
 }
 
 body.theme-dark a {
