@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Базовый сайт</title>
+    <title>Dmitry Ryashikov</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,16 +99,113 @@
                 I am a Frontend developer who turns your ideas into working websites. In my projects I use JavaScript, React, Redux, Bootstrap and much more
                 </p>
             </div>
-            <div class="giphy-pashalka">
-              
-            </div>
         </div>
     </main>
-    <section>
-        <div>
-            
+    <!-- Секция "Обо мне" -->
+<section class="container" id="about" style="padding: 100px 0; position: relative;">
+    <h2 class="pixel-glitch" style="font-size: 4em; text-align: center; margin-bottom: 80px;">ОБО МНЕ</h2>
+    <div class="about-grid" style="display: grid; grid-template-columns: 1fr 2fr; gap: 50px; align-items: center;">
+        <div class="profile-container" style="position: relative;">
+            <img src="ваше-фото.jpg" alt="Фото" 
+                 style="width: 400px; height: 500px; object-fit: cover; border-radius: 20px; 
+                        border: 3px solid var(--accent-color); box-shadow: 0 0 30px rgba(24, 144, 255, 0.3);">
+            <div class="glow-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                    border-radius: 20px; background: linear-gradient(45deg, transparent 50%, 
+                    rgba(24, 144, 255, 0.1)); pointer-events: none;"></div>
         </div>
-    </section>
+        
+        <div class="about-content" style="position: relative;">
+            <div class="cyber-border" style="position: absolute; width: 100%; height: 100%;
+                 border: 2px solid var(--accent-color); top: 20px; left: 20px; z-index: -1;"></div>
+            
+            <div class="about-text" style="padding: 40px; background: rgba(255,255,255,0.05);
+                 backdrop-filter: blur(10px); border-radius: 15px; position: relative;">
+                <p style="font-size: 1.5em; line-height: 1.6; margin-bottom: 30px;">
+                    Приветствую в цифровой вселенной моего портфолио. Я - fullstack разработчик, создающий 
+                    иммерсивные веб-вселенные с 2019 года. Моя философия - синтез эстетики и функциональности.
+                </p>
+                <div class="info-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                    <div class="info-item" style="padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px;">
+                        <h3 style="color: var(--accent-color); margin: 0 0 10px;">Специализация</h3>
+                        <p style="margin: 0;">React/Node.js<br>WebGL<br>Blockchain</p>
+                    </div>
+                    <div class="info-item" style="padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px;">
+                        <h3 style="color: var(--accent-color); margin: 0 0 10px;">Награды</h3>
+                        <p style="margin: 0;">Awwwards x3<br>CSSDA x2<br>Dev Awards</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Секция "Навыки" -->
+<section class="container" id="skills" style="padding: 100px 0; position: relative;">
+    <h2 class="pixel-glitch" style="font-size: 4em; text-align: center; margin-bottom: 80px;">НАВЫКИ</h2>
+    
+    <div class="skills-matrix" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+         gap: 30px; position: relative;">
+        
+        <div class="skill-card" style="padding: 30px; background: rgba(255,255,255,0.05); 
+             border-radius: 15px; transition: all 0.3s ease; position: relative;">
+            <div class="skill-header" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <div class="skill-icon" style="width: 50px; height: 50px; background: var(--accent-color);
+                     border-radius: 10px; display: grid; place-items: center;">
+                    <svg style="width: 30px; height: 30px; fill: white;">...</svg>
+                </div>
+                <h3 style="margin: 0; font-size: 1.8em;">Frontend</h3>
+            </div>
+            <div class="skill-progress" style="height: 3px; background: rgba(255,255,255,0.1); margin-bottom: 15px;">
+                <div style="width: 90%; height: 100%; background: var(--accent-color);"></div>
+            </div>
+            <div class="skill-tags" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">React</span>
+                <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">TypeScript</span>
+                <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">WebGL</span>
+            </div>
+        </div>
+
+        <!-- Повторить для других навыков -->
+    </div>
+</section>
+
+<!-- Секция "Проекты" -->
+<section class="container" id="projects" style="padding: 100px 0; position: relative;">
+    <h2 class="pixel-glitch" style="font-size: 4em; text-align: center; margin-bottom: 80px;">ПРОЕКТЫ</h2>
+    
+    <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+         gap: 50px; position: relative;">
+        
+        <div class="project-card" style="position: relative; overflow: hidden; border-radius: 20px;">
+            <div class="project-overlay" style="position: absolute; width: 100%; height: 100%;
+                 background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.9)); z-index: 1;"></div>
+            
+            <img src="проект1.jpg" alt="Проект" 
+                 style="width: 100%; height: 500px; object-fit: cover; transition: transform 0.5s ease;">
+            
+            <div class="project-info" style="position: absolute; bottom: 0; left: 0; padding: 40px; z-index: 2;">
+                <h3 style="font-size: 2em; margin: 0 0 15px;">Киберпанк Магазин</h3>
+                <div class="project-tags" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <span style="padding: 5px 15px; background: var(--accent-color); border-radius: 20px;">React</span>
+                    <span style="padding: 5px 15px; background: var(--accent-color); border-radius: 20px;">Web3</span>
+                </div>
+                <div class="project-links" style="display: flex; gap: 15px;">
+                    <a href="#" style="padding: 10px 30px; background: var(--accent-color); border-radius: 30px;
+                       display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
+                        <svg style="width: 20px; height: 20px; fill: white;">...</svg>
+                        Демо
+                    </a>
+                    <a href="#" style="padding: 10px 30px; border: 2px solid var(--accent-color); 
+                       border-radius: 30px; transition: all 0.3s ease;">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Повторить для других проектов -->
+    </div>
+</section>
     <script>
     const cursor = document.getElementById('cursor');
     let mouseX = 0, mouseY = 0;

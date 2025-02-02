@@ -103,31 +103,6 @@ window.addEventListener('scroll', () => {
         : 'translateY(0)';
     lastScrollTop = currentScroll;
 });
-
-// Плавная прокрутка
-function smoothScroll() {
-    let isScrolling = false;
-
-    window.addEventListener('wheel', (e) => {
-        if (isScrolling) return;
-
-        isScrolling = true;
-        const scrollAmount = e.deltaY > 0 ? 100 : -100;
-        const targetPosition = window.scrollY + scrollAmount;
-
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-
-        setTimeout(() => {
-            isScrolling = false;
-        }, 350);
-    });
-}
-
-smoothScroll();
-
 const glitchText = document.querySelector('.pixel-glitch');
         let isGlitching = false;
 
@@ -148,3 +123,4 @@ const glitchText = document.querySelector('.pixel-glitch');
                 }, 50);
             }
         });
+        
