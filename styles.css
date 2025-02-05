@@ -598,3 +598,42 @@ body.theme-purple .translate-icon {
 body.theme-pink .translate-icon {
   fill: #fff;
 }
+.project-card {
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
+  /* Другие стили карточки, если необходимо */
+}
+/* Тёмная тема */
+body.theme-dark .project-card {
+  border: 1px solid #fff; /* или можно оставить var(--accent-color), если оно определено как #fff */
+}
+
+/* Светлая тема */
+body.theme-light .project-card {
+  border: 1px solid #000; /* или var(--accent-color) */
+}
+
+/* Цветная тема */
+body.theme-colorful .project-card {
+  border: 1px solid #8b0000; /* var(--accent-color) для цветной темы, если оно установлено как #8b0000 */
+}
+
+/* Синяя тема */
+body.theme-blue .project-card {
+  border: 1px solid var(--accent-color); /* var(--accent-color) = #1890ff */
+}
+
+/* Зеленая тема */
+body.theme-green .project-card {
+  border: 1px solid var(--accent-color); /* var(--accent-color) = #73d13d */
+}
+
+/* Фиолетовая тема */
+body.theme-purple .project-card {
+  border: 1px solid var(--accent-color); /* var(--accent-color) = #b37feb */
+}
+
+/* Розовая тема */
+body.theme-pink .project-card {
+  border: 1px solid var(--accent-color); /* var(--accent-color) = #ff85c0 */
+}
