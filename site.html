@@ -1,288 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dmitry Ryashikov</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
-        .cursor-square {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    background-color: var(--cursor-color); 
-    pointer-events: none;
-    border-radius: 2px;
-    transition: transform 0.1s ease-out;
-    z-index: 1000;
-}
-
-.pixel {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    background-color: var(--cursor-color); 
-    border-radius: 50%;
-    pointer-events: none;
-    animation: explode 0.6s forwards;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="Dmitry Ryashikov" data-ru="Дмитрий Ряшиков">Dmitry Ryashikov</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    .cursor-square {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: var(--cursor-color); 
+      pointer-events: none;
+      border-radius: 2px;
+      transition: transform 0.1s ease-out;
+      z-index: 1000;
+    }
     
-        @keyframes explode {
-            0% {
-                transform: scale(1) translate(0, 0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(0.5) translate(var(--dx), var(--dy));
-                opacity: 0;
-            }
-        }
-    </style>
+    .pixel {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background-color: var(--cursor-color); 
+      border-radius: 50%;
+      pointer-events: none;
+      animation: explode 0.6s forwards;
+    }
+    
+    @keyframes explode {
+      0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.5) translate(var(--dx), var(--dy));
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="cursor-square" id="cursor"></div>
+  <div class="cursor-square" id="cursor"></div>
 
-    <div id="loader-container">
-        <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGh1NzF0dDEwMTdpa2Y5cmFhOGp1YjQ5aG4yZzEwOWQwb3B5czZrYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pkfWxD1OWjwhnpF2Rb/giphy.gif" alt="Загрузка..." id="loader">
-        <div class="sixtyfour-load" id="loading-text">Loading</div>
+  <div id="loader-container">
+    <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcGh1NzF0dDEwMTdpa2Y5cmFhOGp1YjQ5aG4yZzEwOWQwb3B5czZrYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pkfWxD1OWjwhnpF2Rb/giphy.gif" alt="Загрузка..." id="loader">
+    <div class="sixtyfour-load" id="loading-text" data-en="Loading" data-ru="Загрузка...">Loading</div>
+  </div>
+  <header class="hidden">
+    <div class="container header-container">
+      <div class="logo" data-en="Dante" data-ru="Dante">Dante</div>
+      <nav>
+        <div class="nav-center">
+          <button data-en="change the mood" data-ru="Изменить тему" class="change-mood" id="changeMoodBtn">change the mood</button>
+        </div>
+        <div class="nav-right">
+          <button class="change-mood" id="translateBtn" aria-label="Translate">
+            <svg class="translate-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
     </div>
-    <header class="hidden">
-        <div class="container header-container">
-            <div class="logo">Dante</div>
-            <nav>
-                <div class="nav-center">
-                    <button data-en="change-mood" data-ru="Изменить тему" class="change-mood" id="changeMoodBtn">change the mood</button>
-                </div>
-                <div class="nav-right">
-                    <button class="change-mood" id="translateBtn" aria-label="Translate">
-                        <svg class="translate-icon" viewBox="0 0 24 24" aria-hidden="true">
+  </header>
+  <main>
+    <div class="container main-container">
+      <div class="left-info">
+        <span class="year">2002</span>
+        <span class="date">21.10</span>
+      </div>
+      <h1 class="pixel-glitch" data-en="WEB DEVELOPER" data-ru="ВЕБ РАЗРАБОТЧИК">WEB DEVELOPER</h1>
+      <div class="right-info">
+        <div class="design-area"></div>
+        <div class="social-icons">
+          <a href="https://github.com/DanteMxR">GitHub</a>
+          <a href="https://vk.com/dante_rxm">VK</a>
+          <a href="https://t.me/DanteRxM">Telegram</a>
+        </div>
+      </div>
+      <div class="dante">
+        <div class="dante-text">
+          <p data-en="■ HELLO I'M Dmitry" data-ru="■ ПРИВЕТ, Я ДМИТРИЙ">■ HELLO I'M Dmitry</p>
+        </div>
+        <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTMxN3YxdGd4cjJqMHkyeDJhaDJwbG51dmQ4am9oaDA2MGRxemdsbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mBvUaCuDPEXNnIk2NK/giphy.gif" alt="dante" class="dante-img">
+      </div>
+      <div class="design-description">
+        <h2 data-en="WEB & FRONTEND" data-ru="WEB & FRONTEND">WEB & FRONTEND</h2>
+        <h2 data-en="DEVELOP" data-ru="РАЗРАБОТКА">DEVELOP</h2>
+        <p data-en="I am a Frontend developer who turns your ideas into working websites. In my projects I use JavaScript, React, Redux, Bootstrap and much more" 
+           data-ru="Я фронтенд-разработчик, превращающий ваши идеи в рабочие веб-сайты. В своих проектах я использую JavaScript, React, Redux, Bootstrap и другие современные технологии">
+          I am a Frontend developer who turns your ideas into working websites. In my projects I use JavaScript, React, Redux, Bootstrap and much more
+        </p>
+      </div>
+    </div>
+  </main>
 
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                        </svg>
-                      </button>
-                </div>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <div class="container main-container">
-            <div class="left-info">
-                <span class="year">2002</span>
-                <span class="date">21.10</span>
-            </div>
-            <h1 class="pixel-glitch" data-en="WEB DEVELOPER" data-ru="ВЕБ РАЗРАБОТЧИК">WEB DEVELOPER</h1>
-            <div class="right-info">
-                <div class="design-area"></div>
-                <div class="social-icons">
-                    <a href="https://github.com/DanteMxR">GitHub</a>
-                    <a href="https://vk.com/dante_rxm">VK</a>
-                    <a href="https://t.me/DanteRxM">Telegram</a>
-                </div>
-            </div>
-            <div class="dante">
-                <div class="dante-text">
-                    <p data-en="■ HELLO I'M Dmitry" data-ru="■ ПРИВЕТ, Я ДМИТРИЙ">■ HELLO I'M Dmitry</p>
-                </div>
-                <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTMxN3YxdGd4cjJqMHkyeDJhaDJwbG51dmQ4am9oaDA2MGRxemdsbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mBvUaCuDPEXNnIk2NK/giphy.gif" alt="dante" class="dante-img">
-            </div>
-            <div class="design-description">
-                <h2 data-en="FRONTEND" data-ru="FRONTEND">WEB & FRONTEND</h2>
-                <h2 data-en="DEVELOP" data-ru="РАЗРАБОТКА">DEVELOP</h2>
-                <p data-en="I am a Frontend developer who turns your ideas into working websites. In my projects I use JavaScript, React, Redux, Bootstrap and much more" 
-                data-ru="Я фронтенд-разработчик, превращающий ваши идеи в рабочие веб-сайты. В своих проектах я использую JavaScript, React, Redux, Bootstrap и другие современные технологии">
-                I am a Frontend developer who turns your ideas into working websites. In my projects I use JavaScript, React, Redux, Bootstrap and much more
-                </p>
-            </div>
-        </div>
-    </main>
-    <!-- Секция "Обо мне" -->
-<section class="container" id="about" style="padding: 100px 0; position: relative;">
-    <h2 class="pixel-glitch" style="font-size: 4em; text-align: center; margin-bottom: 80px;">ОБО МНЕ</h2>
+  <!-- Секция "Обо мне" -->
+  <section class="container" id="about" style="padding: 100px 0; position: relative;">
+    <h2 class="pixel-glitch" style="font-size: 4em; text-align: center; margin-bottom: 80px;" data-en="ABOUT ME" data-ru="ОБО МНЕ">ABOUT ME</h2>
     <div class="about-grid" style="display: grid; grid-template-columns: 1fr 2fr; gap: 50px; align-items: center;">
-        <div class="profile-container" style="position: relative;">
-            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2RvdDRubTkwdTQzZ21mcXUxb3BjdzE2NGRudXVpNjBpbHJ5anFhdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YRnuvj6tXvFa2ID6v3/giphy.gif" alt="Фото" 
-                 style="width: 400px; height: 500px; object-fit: cover; border-radius: 20px; 
-                        border: 3px solid var(--accent-color); box-shadow: 0 0 30px rgba(24, 144, 255, 0.3);">
-            <div class="glow-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                    border-radius: 20px; background: linear-gradient(45deg, transparent 50%, 
-                    rgba(24, 144, 255, 0.1)); pointer-events: none;"></div>
-        </div>
+      <div class="profile-container" style="position: relative;">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2RvdDRubTkwdTQzZ21mcXUxb3BjdzE2NGRudXVpNjBpbHJ5anFhdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YRnuvj6tXvFa2ID6v3/giphy.gif" alt="Фото" 
+             style="width: 400px; height: 500px; object-fit: cover; border-radius: 20px; 
+                    border: 3px solid var(--accent-color); box-shadow: 0 0 30px rgba(24, 144, 255, 0.3);">
+        <div class="glow-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                border-radius: 20px; background: linear-gradient(45deg, transparent 50%, 
+                rgba(24, 144, 255, 0.1)); pointer-events: none;"></div>
+      </div>
+      
+      <div class="about-content" style="position: relative;">
+        <div class="cyber-border" style="position: absolute; width: 100%; height: 100%;
+             border: 2px solid var(--accent-color); top: 20px; left: 20px; z-index: -1;"></div>
         
-        <div class="about-content" style="position: relative;">
-            <div class="cyber-border" style="position: absolute; width: 100%; height: 100%;
-                 border: 2px solid var(--accent-color); top: 20px; left: 20px; z-index: -1;"></div>
-            
-            <div class="about-text" style="padding: 40px; background: rgba(255,255,255,0.05);
-                 backdrop-filter: blur(10px); border-radius: 15px; position: relative;">
-                <p style="font-size: 1.5em; line-height: 1.6; margin-bottom: 30px;">
-                    Приветствую в цифровой вселенной моего портфолио. Я - fullstack разработчик, создающий 
-                    иммерсивные веб-вселенные с 2019 года. Моя философия - синтез эстетики и функциональности.
-                </p>
-                <div class="info-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-                    <div class="info-item" style="padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px;">
-                        <h3 style="color: var(--accent-color); margin: 0 0 10px;">Специализация</h3>
-                        <p style="margin: 0;">React/Node.js<br>WebGL<br>Blockchain</p>
-                    </div>
-                    <div class="info-item" style="padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px;">
-                        <h3 style="color: var(--accent-color); margin: 0 0 10px;">Награды</h3>
-                        <p style="margin: 0;">Awwwards x3<br>CSSDA x2<br>Dev Awards</p>
-                    </div>
-                </div>
+        <div class="about-text" style="padding: 40px; background: rgba(255,255,255,0.05);
+             backdrop-filter: blur(10px); border-radius: 15px; position: relative;">
+          <p style="font-size: 1.5em; line-height: 1.6; margin-bottom: 30px;"
+             data-en="Welcome to the digital universe of my portfolio. I’m a fullstack developer creating immersive web universes since 2019. My philosophy is the synthesis of aesthetics and functionality." 
+             data-ru="Приветствую в цифровой вселенной моего портфолио. Я — fullstack разработчик, создающий иммерсивные веб-вселенные с 2019 года. Моя философия — синтез эстетики и функциональности.">
+            Welcome to the digital universe of my portfolio. I’m a fullstack developer creating immersive web universes since 2019. My philosophy is the synthesis of aesthetics and functionality.
+          </p>
+          <div class="info-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+            <div class="info-item" style="padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px;">
+              <h3 style="color: var(--accent-color); margin: 0 0 10px;" data-en="Specialization" data-ru="Специализация">Specialization</h3>
+              <p style="margin: 0;">React/Node.js<br>WebGL<br>Blockchain</p>
             </div>
+            <div class="info-item" style="padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px;">
+              <h3 style="color: var(--accent-color); margin: 0 0 10px;" data-en="Awards" data-ru="Награды">Awards</h3>
+              <p style="margin: 0;">Awwwards x3<br>CSSDA x2<br>Dev Awards</p>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Секция "Навыки" -->
-<section class="container" id="skills" style="padding: 100px 0; position: relative;">
-    <h2 class="pixel-glitch" style="font-size: 4em; text-align: center; margin-bottom: 80px;">НАВЫКИ</h2>
+  <!-- Секция "Навыки" -->
+  <section class="container" id="skills" style="padding: 100px 0; position: relative;">
+    <h2 class="pixel-glitch" style="font-size: 4em; text-align: center; margin-bottom: 80px;" data-en="SKILLS" data-ru="НАВЫКИ">SKILLS</h2>
     
     <div class="skills-matrix" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
          gap: 30px; position: relative;">
-        
-        <div class="skill-card" style="padding: 30px; background: rgba(255,255,255,0.05); 
-             border-radius: 15px; transition: all 0.3s ease; position: relative;">
-            <div class="skill-header" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                <div class="skill-icon" style="width: 50px; height: 50px; background: var(--accent-color);
-                     border-radius: 10px; display: grid; place-items: center;">
-                    <svg style="width: 30px; height: 30px; fill: white;">...</svg>
-                </div>
-                <h3 style="margin: 0; font-size: 1.8em;">Frontend</h3>
-            </div>
-            <div class="skill-progress" style="height: 3px; background: rgba(255,255,255,0.1); margin-bottom: 15px;">
-                <div style="width: 90%; height: 100%; background: var(--accent-color);"></div>
-            </div>
-            <div class="skill-tags" style="display: flex; flex-wrap: wrap; gap: 10px;">
-                <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">React</span>
-                <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">TypeScript</span>
-                <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">WebGL</span>
-            </div>
+      
+      <div class="skill-card" style="padding: 30px; background: rgba(255,255,255,0.05); 
+           border-radius: 15px; transition: all 0.3s ease; position: relative;">
+        <div class="skill-header" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+          <div class="skill-icon" style="width: 50px; height: 50px; background: var(--accent-color);
+               border-radius: 10px; display: grid; place-items: center;">
+            <svg style="width: 30px; height: 30px; fill: white;">...</svg>
+          </div>
+          <h3 style="margin: 0; font-size: 1.8em;" data-en="Frontend" data-ru="Frontend">Frontend</h3>
         </div>
+        <div class="skill-progress" style="height: 3px; background: rgba(255,255,255,0.1); margin-bottom: 15px;">
+          <div style="width: 90%; height: 100%; background: var(--accent-color);"></div>
+        </div>
+        <div class="skill-tags" style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">React</span>
+          <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">TypeScript</span>
+          <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">WebGL</span>
+        </div>
+      </div>
 
-
-        <div class="skill-card" style="padding: 30px; background: rgba(255,255,255,0.05); 
-        border-radius: 15px; transition: all 0.3s ease; position: relative;">
-       <div class="skill-header" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-           <div class="skill-icon" style="width: 50px; height: 50px; background: var(--accent-color);
-                border-radius: 10px; display: grid; place-items: center;">
-               <svg style="width: 30px; height: 30px; fill: white;">...</svg>
-           </div>
-           <h3 style="margin: 0; font-size: 1.8em;">Frontend</h3>
-       </div>
-       <div class="skill-progress" style="height: 3px; background: rgba(255,255,255,0.1); margin-bottom: 15px;">
-           <div style="width: 90%; height: 100%; background: var(--accent-color);"></div>
-       </div>
-       <div class="skill-tags" style="display: flex; flex-wrap: wrap; gap: 10px;">
-           <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">React</span>
-           <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">TypeScript</span>
-           <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">WebGL</span>
-       </div>
-   </div>
-   
-        <!-- Повторить для других навыков -->
+      <div class="skill-card" style="padding: 30px; background: rgba(255,255,255,0.05); 
+           border-radius: 15px; transition: all 0.3s ease; position: relative;">
+        <div class="skill-header" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+          <div class="skill-icon" style="width: 50px; height: 50px; background: var(--accent-color);
+               border-radius: 10px; display: grid; place-items: center;">
+            <svg style="width: 30px; height: 30px; fill: white;">...</svg>
+          </div>
+          <h3 style="margin: 0; font-size: 1.8em;" data-en="Frontend" data-ru="Frontend">Frontend</h3>
+        </div>
+        <div class="skill-progress" style="height: 3px; background: rgba(255,255,255,0.1); margin-bottom: 15px;">
+          <div style="width: 90%; height: 100%; background: var(--accent-color);"></div>
+        </div>
+        <div class="skill-tags" style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">React</span>
+          <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">TypeScript</span>
+          <span style="padding: 5px 15px; background: rgba(24,144,255,0.2); border-radius: 20px;">WebGL</span>
+        </div>
+      </div>
+      
+      <!-- Повторите блоки для других навыков -->
     </div>
-</section>
+  </section>
 
-<!-- Секция "Проекты" -->
-<section class="container" id="projects" style="padding: 100px 0; position: relative;">
-    <h2 class="pixel-glitch" style="font-size: 4em; text-align: center; margin-bottom: 80px;">ПРОЕКТЫ</h2>
+  <!-- Секция "Проекты" -->
+  <section class="container" id="projects" style="padding: 100px 0; position: relative;">
+    <h2 class="pixel-glitch" style="font-size: 4em; text-align: center; margin-bottom: 80px;" data-en="PROJECTS" data-ru="ПРОЕКТЫ">PROJECTS</h2>
     
     <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
          gap: 50px; position: relative;">
+      
+      <div class="project-card" style="position: relative; overflow: hidden; border-radius: 20px;">
+        <div class="project-overlay" style="position: absolute; width: 100%; height: 100%;
+             background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.9)); z-index: 1;"></div>
         
-        <div class="project-card" style="position: relative; overflow: hidden; border-radius: 20px;">
-            <div class="project-overlay" style="position: absolute; width: 100%; height: 100%;
-                 background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.9)); z-index: 1;"></div>
-            
-            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3hnNDQzNHl4NnBtNzkzYzJ4aHkzYThsNGwybGNpOGNsZmoydG54dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oriNMWspLsixlFxFC/giphy.gif" alt="Проект" 
-                 style="width: 100%; height: 500px; object-fit: cover; transition: transform 0.5s ease;">
-            
-            <div class="project-info" style="position: absolute; bottom: 0; left: 0; padding: 40px; z-index: 2;">
-                <h3 style="font-size: 2em; margin: 0 0 15px;">Киберпанк Магазин</h3>
-                <div class="project-tags" style="display: flex; gap: 10px; margin-bottom: 20px;">
-                    <span style="padding: 5px 15px; background: var(--accent-color); border-radius: 20px;">React</span>
-                    <span style="padding: 5px 15px; background: var(--accent-color); border-radius: 20px;">Web3</span>
-                </div>
-                <div class="project-links" style="display: flex; gap: 15px;">
-                    <a href="#" style="padding: 10px 30px; background: var(--accent-color); border-radius: 30px;
-                       display: flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
-                        <svg style="width: 20px; height: 20px; fill: white;">...</svg>
-                        Демо
-                    </a>
-                    <a href="#" style="padding: 10px 30px; border: 2px solid var(--accent-color); 
-                       border-radius: 30px; transition: all 0.3s ease;">
-                        GitHub
-                    </a>
-                </div>
-            </div>
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3hnNDQzNHl4NnBtNzkzYzJ4aHkzYThsNGwybGNpOGNsZmoydG54dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oriNMWspLsixlFxFC/giphy.gif" alt="Проект" 
+             style="width: 100%; height: 500px; object-fit: cover; transition: transform 0.5s ease;">
+        
+        <div class="project-info" style="position: absolute; bottom: 0; left: 0; padding: 40px; z-index: 2;">
+          <h3 style="font-size: 2em; margin: 0 0 15px;" data-en="Cyberpunk Shop" data-ru="Киберпанк Магазин">Mono Ai</h3>
+          <div class="project-tags" style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <span style="padding: 5px 15px; border: 2px solid var(--accent-color); 
+               border-radius: 30px; transition: all 0.3s ease;">React</span>
+           <span style="padding: 5px 15px; border: 2px solid var(--accent-color); 
+               border-radius: 30px; transition: all 0.3s ease;">React</span>
+          </div>
+          <div class="project-links" style="display: flex; gap: 15px;">
+            <a href="#" style="padding: 10px 30px; border: 2px solid var(--accent-color); 
+               border-radius: 30px; transition: all 0.3s ease;" data-en="GitHub" data-ru="GitHub">
+              GitHub
+            </a>
+          </div>
         </div>
-        <!-- Повторить для других проектов -->
+      </div>
+      <!-- Повторите блоки для других проектов -->
     </div>
-</section>
-    <script>
+  </section>
+
+  <script>
+    // Переменные для курсора
     const cursor = document.getElementById('cursor');
     let mouseX = 0, mouseY = 0;
     let squareX = 0, squareY = 0;
 
     document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
     });
 
-   
     function animateSquare() {
-        squareX += (mouseX - squareX) * 0.1;
-        squareY += (mouseY - squareY) * 0.1;
-        cursor.style.transform = `translate(${squareX}px, ${squareY}px)`;
-        requestAnimationFrame(animateSquare);
+      squareX += (mouseX - squareX) * 0.1;
+      squareY += (mouseY - squareY) * 0.1;
+      cursor.style.transform = `translate(${squareX}px, ${squareY}px)`;
+      requestAnimationFrame(animateSquare);
     }
 
-  
     document.addEventListener('click', (e) => {
-        const numPixels = 140; 
-        for (let i = 0; i < numPixels; i++) {
-            createPixel(e.clientX, e.clientY);
-        }
+      const numPixels = 140; 
+      for (let i = 0; i < numPixels; i++) {
+        createPixel(e.clientX, e.clientY);
+      }
     });
 
-    
     function createPixel(x, y) {
-        const pixel = document.createElement('div');
-        pixel.classList.add('pixel');
+      const pixel = document.createElement('div');
+      pixel.classList.add('pixel');
 
-       
-        const angle = Math.random() * 2 * Math.PI;
-        const distance = Math.random() * 100 + 60; 
+      const angle = Math.random() * 2 * Math.PI;
+      const distance = Math.random() * 100 + 60; 
 
-       
-        const dx = Math.cos(angle) * distance;
-        const dy = Math.sin(angle) * distance;
+      const dx = Math.cos(angle) * distance;
+      const dy = Math.sin(angle) * distance;
 
-   
-        pixel.style.setProperty('--dx', `${dx}px`);
-        pixel.style.setProperty('--dy', `${dy}px`);
+      pixel.style.setProperty('--dx', `${dx}px`);
+      pixel.style.setProperty('--dy', `${dy}px`);
 
-       
-        pixel.style.left = `${x - 2}px`; 
-        pixel.style.top = `${y - 2}px`;
+      pixel.style.left = `${x - 2}px`; 
+      pixel.style.top = `${y - 2}px`;
 
+      document.body.appendChild(pixel);
 
-        document.body.appendChild(pixel);
-
-
-        setTimeout(() => {
-            pixel.remove();
-        }, 900); 
+      setTimeout(() => {
+        pixel.remove();
+      }, 900); 
     }
 
     animateSquare();
-</script>
+  </script>
+  <script src="scripts.js"></script>
 </body>
-<script src="scripts.js"></script>
 </html>

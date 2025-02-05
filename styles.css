@@ -573,6 +573,7 @@ header nav button#translateBtn:hover {
 
 #translateBtn:hover .translate-icon {
   transform: rotate(15deg);
+  fill: #000;
 }
 
 /* Цвета иконки */
