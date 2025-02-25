@@ -727,6 +727,10 @@ body.theme-light .change-mood:hover {
   color: #fff;
 }
 
+body.theme-light .skill-icon {
+  background: white !important;
+}
+
 /* Цветная тема */
 body.theme-colorful {
   --cursor-color: #8b0000;
