@@ -30,7 +30,12 @@ let isRussian = false;
 
 // Функция обновления гифки
 function updateGif() {
-    danteImg.src = gifUrls[currentThemeIndex];
+    danteImg.style.transition = "opacity 0.5s ease";
+    danteImg.style.opacity = 0;
+    setTimeout(() => {
+        danteImg.src = gifUrls[currentThemeIndex];
+        danteImg.style.opacity = 1;
+    }, 500);
 }
 
 // Проверяем сохранённую тему
