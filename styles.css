@@ -447,29 +447,251 @@ nav {
 
 /* Мобильная версия хедера */
 @media (max-width: 768px) {
-  .header-container {
-    flex-wrap: wrap;
-    justify-content: center;
+  body {
+    font-size: 14px;
   }
-  .nav-center {
+  
+  .container {
+    padding: 0 15px;
+    max-width: 100%;
+  }
+  
+  /* Фиксированный хедер с полупрозрачным фоном */
+  header {
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .logo {
+    font-size: 24px;
+    margin-bottom: 15px;
+    order: 1;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-center, .nav-right {
     position: static;
     transform: none;
-    order: 2;
     width: 100%;
     text-align: center;
     margin: 10px 0;
   }
-  .nav-right {
-    order: 3;
-    margin-left: 0;
-    width: 100%;
-    text-align: center;
+  
+  /* Улучшения для кнопок */
+  .change-mood, #translateBtn {
+    padding: 8px 15px !important;
+    font-size: 16px !important;
+    width: auto !important;
+    border-width: 2px !important;
+    transition: all 0.2s ease !important;
   }
-  .logo {
-    order: 1;
-    width: 100%;
+  
+  /* Основной контент */
+  .main-container {
+    grid-template-columns: 1fr;
+    padding: 80px 0 20px;
+    gap: 20px;
+  }
+  
+  .left-info,
+  .right-info,
+  .main-container h1,
+  .main-container > p {
     text-align: center;
+    grid-column: 1 / 2;
+  }
+  
+  .left-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
     margin-bottom: 10px;
+  }
+  
+  .left-info span {
+    font-size: 16px;
+  }
+  
+  .main-container h1 {
+    font-size: 36px !important;
+    letter-spacing: 0;
+    margin: 10px 0;
+    line-height: 1.2;
+  }
+  
+  .dante {
+    grid-column: 1;
+    margin: 20px 0;
+    position: static;
+    align-items: center;
+  }
+  
+  .dante-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+  }
+  
+  .dante-text {
+    font-size: 16px !important;
+  }
+  
+  /* Улучшения для социальных иконок */
+  .social-icons {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px auto 0;
+    font-size: 18px;
+    gap: 15px;
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid var(--accent-color);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    background-color: var(--accent-color);
+    color: var(--main-bg);
+  }
+  
+  .design-description {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .design-description h2 {
+    font-size: 20px;
+  }
+  
+  .design-description p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 15px 0;
+  }
+  
+  /* Секция "Обо мне" */
+  #about, #skills, #projects {
+    padding: 50px 0;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .profile-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .profile-container img {
+    width: 280px;
+    height: 350px;
+  }
+  
+  .about-text {
+    padding: 20px;
+  }
+  
+  .about-text p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Секция "Навыки" */
+  .skills-matrix {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .skill-card {
+    padding: 20px;
+  }
+  
+  .skill-header h3 {
+    font-size: 20px;
+  }
+  
+  /* Секция "Проекты" */
+  .project-card {
+    margin-top: 30px !important;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .project-card img {
+    height: 250px;
+    object-fit: cover;
+    object-position: top center;
+  }
+  
+  .project-info {
+    padding: 20px;
+  }
+  
+  .project-info h3 {
+    font-size: 22px;
+  }
+  
+  .project-tags span {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+  
+  .project-links a {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+  
+  /* Фикс для пиксельного глитч-эффекта */
+  .pixel-glitch {
+    font-size: 28px !important;
+    margin-bottom: 30px;
+  }
+  
+  /* Улучшения для анимаций */
+  .pixel-glitch:hover {
+    animation: glitch 0.2s infinite;
+  }
+  
+  /* Плавные переходы для всех элементов */
+  * {
+    transition: all 0.3s ease;
+  }
+  
+  /* Добавляем отступы для лучшей читаемости */
+  p {
+    margin-bottom: 15px;
+  }
+  
+  /* Улучшаем отображение заголовков */
+  h1, h2, h3 {
+    margin-bottom: 15px;
   }
 }
 
@@ -634,15 +856,15 @@ main {
 
 @media (max-width: 768px) {
   .dante-img {
-    width: 250px;
-    height: 150px;
+    width: 100%;
+    height: auto;
   }
 }
 
 @media (max-width: 768px) {
   .main-container {
-    padding: 30px 0;
     grid-template-columns: 1fr;
+    padding: 20px 0;
   }
   .left-info,
   .right-info,
@@ -652,8 +874,7 @@ main {
     grid-column: 1 / 2;
   }
   .main-container h1 {
-    font-family: "Jost", serif;
-    font-size: 3em;
+    font-size: 2.5em;
   }
   .main-container > p {
     margin-top: 10px;
@@ -939,4 +1160,361 @@ body.theme-purple .project-card {
 
 body.theme-pink .project-card {
   border: 1px solid var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  .container {
+    padding: 0 10px;
+  }
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav-center, .nav-right {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
+  .main-container {
+    grid-template-columns: 1fr;
+    padding: 20px 0;
+  }
+  .main-container h1 {
+    font-size: 2.5em;
+  }
+  .left-info, .right-info {
+    text-align: center;
+  }
+  .dante-img {
+    width: 100%;
+    height: auto;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .profile-container img {
+    width: 100%;
+    height: auto;
+  }
+  .skills-matrix {
+    grid-template-columns: 1fr;
+  }
+  .project-card {
+    margin-top: 20px;
+  }
+}
+
+/* Добавляем медиа-запрос для очень маленьких экранов */
+@media (max-width: 480px) {
+  /* Хедер */
+  header {
+    padding: 8px 0;
+  }
+  
+  .logo {
+    font-size: 20px;
+  }
+  
+  .change-mood {
+    padding: 6px 12px !important;
+    font-size: 14px !important;
+  }
+  
+  /* Основной контент */
+  .main-container {
+    padding: 70px 0 10px;
+  }
+  
+  .main-container h1 {
+    font-size: 28px !important;
+  }
+  
+  .left-info {
+    flex-direction: row;
+    gap: 15px;
+  }
+  
+  .left-info span {
+    font-size: 14px;
+  }
+  
+  .dante-img {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .dante-text {
+    font-size: 14px !important;
+  }
+  
+  .social-icons {
+    font-size: 16px;
+    gap: 10px;
+  }
+  
+  .social-icons a {
+    padding: 6px 10px;
+  }
+  
+  .design-description h2 {
+    font-size: 18px;
+  }
+  
+  .design-description p {
+    font-size: 14px;
+  }
+  
+  /* Секции */
+  #about, #skills, #projects {
+    padding: 40px 0;
+  }
+  
+  .pixel-glitch {
+    font-size: 24px !important;
+    margin-bottom: 25px;
+  }
+  
+  .profile-container img {
+    width: 220px;
+    height: 280px;
+  }
+  
+  .about-text {
+    padding: 15px;
+  }
+  
+  .about-text p {
+    font-size: 14px;
+  }
+  
+  .skill-card {
+    padding: 15px;
+  }
+  
+  .skill-header h3 {
+    font-size: 18px;
+  }
+  
+  .skill-tags span {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+  
+  .project-card img {
+    height: 200px;
+  }
+  
+  .project-info {
+    padding: 15px;
+  }
+  
+  .project-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .project-tags {
+    gap: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .project-links a {
+    padding: 6px 15px;
+    font-size: 12px;
+  }
+  
+  /* Курсор */
+  .cursor-square {
+    display: none; /* Отключаем кастомный курсор на мобильных */
+  }
+}
+
+/* Добавляем медиа-запрос для планшетов */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  /* Хедер */
+  header {
+    padding: 15px 0;
+  }
+  
+  .logo {
+    font-size: 28px;
+  }
+  
+  /* Основной контент */
+  .main-container {
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 100px 0 40px;
+    gap: 15px;
+  }
+  
+  .main-container h1 {
+    font-size: 5em;
+    letter-spacing: -3px;
+  }
+  
+  .dante-img {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .social-icons {
+    font-size: 2.5vh;
+  }
+  
+  /* Секции */
+  #about, #skills, #projects {
+    padding: 70px 0;
+  }
+  
+  .about-grid {
+    gap: 30px;
+  }
+  
+  .profile-container img {
+    width: 320px;
+    height: 400px;
+  }
+  
+  .about-text p {
+    font-size: 1.2em;
+  }
+  
+  .skills-matrix {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .project-card img {
+    height: 400px;
+  }
+  
+  .project-info {
+    padding: 30px;
+  }
+}
+
+/* Исправления для очень маленьких экранов */
+@media (max-width: 360px) {
+  .main-container h1 {
+    font-size: 24px !important;
+  }
+  
+  .dante-img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .social-icons {
+    font-size: 14px;
+    gap: 8px;
+  }
+  
+  .social-icons a {
+    padding: 5px 8px;
+  }
+  
+  .project-card img {
+    height: 180px;
+  }
+  
+  .project-info h3 {
+    font-size: 16px;
+  }
+  
+  .project-tags span {
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+  
+  .project-links a {
+    padding: 5px 12px;
+    font-size: 11px;
+  }
+}
+
+/* Добавляем стили для тач-устройств */
+@media (hover: none) {
+  /* Улучшенные состояния при нажатии для мобильных устройств */
+  .change-mood:active, #translateBtn:active {
+    background-color: var(--accent-color);
+    color: var(--main-bg);
+    transform: scale(0.95);
+  }
+  
+  .social-icons a:active {
+    background-color: var(--accent-color);
+    color: var(--main-bg);
+    transform: scale(0.95);
+  }
+  
+  .project-card:active {
+    transform: scale(0.98);
+  }
+  
+  .project-links a:active {
+    background-color: var(--accent-color);
+    color: var(--main-bg);
+  }
+  
+  /* Отключаем эффекты наведения, которые не работают на тач-устройствах */
+  .pixel-glitch:hover {
+    animation: none;
+  }
+}
+
+/* Улучшения для ориентации экрана */
+@media (max-width: 768px) and (orientation: landscape) {
+  .main-container {
+    padding: 60px 0 20px;
+  }
+  
+  .dante {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .dante-img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .skills-matrix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Добавляем плавные переходы для всех элементов */
+@media (max-width: 768px) {
+  * {
+    transition: all 0.3s ease;
+  }
+  
+  /* Улучшаем отображение кнопок */
+  .change-mood, #translateBtn {
+    padding: 8px 15px !important;
+    font-size: 16px !important;
+    width: auto !important;
+  }
+  
+  /* Добавляем отступы для лучшей читаемости */
+  p {
+    margin-bottom: 15px;
+  }
+  
+  /* Улучшаем отображение заголовков */
+  h1, h2, h3 {
+    margin-bottom: 15px;
+  }
 }
