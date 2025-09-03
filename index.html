@@ -115,8 +115,10 @@
         <div class="skill-tags">
           <span>React</span>
           <span>Next.js</span>
+          <span>Redux</span>
           <span>JavaScript</span>
           <span>TypeScript</span>
+          <span>Socket.IO</span>
           <span>Bootstrap</span>
           <span>SCSS</span>
           <span>ShadCN</span>
@@ -181,6 +183,7 @@
           </div>
           <div class="project-links">
             <a href="https://iskra.context8.ru/" data-en=" Watch" data-ru="Смотреть">Watch</a>
+            <button class="project-details-btn" onclick="openProjectModal('iskra')" data-en="Details" data-ru="Подробнее">Подробнее</button>
           </div>
         </div>
       </div>
@@ -197,6 +200,7 @@
           </div>
           <div class="project-links">
             <a href="https://cft.gl/" data-en=" Watch" data-ru="Смотреть">Watch</a>
+            <button class="project-details-btn" onclick="openProjectModal('cyberfight')" data-en="Details" data-ru="Подробнее">Подробнее</button>
           </div>
         </div>
       </div>
@@ -208,10 +212,12 @@
           <h3 data-en="Mono Ai" data-ru="Mono Ai">Mono Ai</h3>
           <div class="project-tags">
             <span>React</span>
+            <span>Redux</span>
             <span>TypeScript</span>
           </div>
           <div class="project-links">
             <a href="https://monoai.ru/" data-en=" Watch" data-ru="Смотреть">Watch</a>
+            <button class="project-details-btn" onclick="openProjectModal('monoai')" data-en="Details" data-ru="Подробнее">Подробнее</button>
           </div>
         </div>
       </div>
@@ -224,9 +230,11 @@
           <div class="project-tags">
             <span>React</span>
             <span>TypeScript</span>
+            <span>Socket.IO</span>
           </div>
           <div class="project-links">
             <a href="https://monotalk.ru/" data-en=" Watch" data-ru="Смотреть">Watch</a>
+            <button class="project-details-btn" onclick="openProjectModal('monotalk')" data-en="Details" data-ru="Подробнее">Подробнее</button>
           </div>
         </div>
       </div>
@@ -245,6 +253,7 @@
           </div>
           <div class="project-links">
             <a href="https://termodom-pnz.ru/" data-en=" Watch" data-ru="Смотреть">Watch</a>
+            <button class="project-details-btn" onclick="openProjectModal('termobot')" data-en="Details" data-ru="Подробнее">Подробнее</button>
           </div>
         </div>
       </div>
@@ -262,6 +271,7 @@
         </div>
         <div class="project-links">
           <a href="https://camper-jack.ru/" data-en=" Watch" data-ru="Смотреть">Watch</a>
+          <button class="project-details-btn" onclick="openProjectModal('camper')" data-en="Details" data-ru="Подробнее">Подробнее</button>
         </div>
       </div>
     </div>
@@ -278,11 +288,20 @@
       </div>
       <div class="project-links">
         <a href="https://itab.pro/" data-en=" Watch" data-ru="Смотреть">Watch</a>
+        <button class="project-details-btn" onclick="openProjectModal('itab')" data-en="Details" data-ru="Подробнее">Подробнее</button>
       </div>
     </div>
   </div>
 </div>
   </section>
+
+  <!-- Модальные окна для проектов -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeProjectModal()">&times;</span>
+      <div id="modalContent"></div>
+    </div>
+  </div>
 
   <script>
     // Переменные для курсора
@@ -330,6 +349,135 @@
       setTimeout(() => {
         pixel.remove();
       }, 900); 
+    }
+
+    // Данные проектов
+    const projectData = {
+      iskra: {
+        title: { en: "Iskra", ru: "Искра" },
+        description: {
+          en: "An innovative web plugin for automated recruitment funnel that finds the best candidates while you focus on the main thing - business growth. Smart HR automation solution.",
+          ru: "Инновационный веб-плагин для автоматической воронки найма, который подбирает лучших кандидатов, пока вы занимаетесь главным – ростом бизнеса. Умное решение для автоматизации HR."
+        },
+        features: {
+          en: ["Automated candidate selection", "Smart recruitment funnel", "Business growth focus", "HR process optimization"],
+          ru: ["Автоматический подбор кандидатов", "Умная воронка найма", "Фокус на росте бизнеса", "Оптимизация HR-процессов"]
+        },
+        tech: ["React", "Next.js", "TypeScript", "ShadCN"]
+      },
+      cyberfight: {
+        title: { en: "CyberFight", ru: "CyberFight" },
+        description: {
+          en: "A comprehensive service for creating online tournaments and Steam account top-ups. Perfect platform for gaming communities to organize competitions and manage gaming finances.",
+          ru: "Комплексный сервис для создания онлайн турниров и пополнения Steam аккаунтов. Идеальная платформа для игровых сообществ для организации соревнований и управления игровыми финансами."
+        },
+        features: {
+          en: ["Online tournament creation", "Steam account top-ups", "Tournament management", "Gaming community tools"],
+          ru: ["Создание онлайн турниров", "Пополнение Steam аккаунтов", "Управление турнирами", "Инструменты игрового сообщества"]
+        },
+        tech: ["React", "Next.js", "TypeScript"]
+      },
+      monoai: {
+        title: { en: "Mono AI", ru: "Mono AI" },
+        description: {
+          en: "A subscription-based web service for using all neural networks in one place. Centralized AI platform providing access to multiple AI models and tools for various business needs.",
+          ru: "Подписочный веб-сервис для использования всех нейросетей в одном месте. Централизованная AI платформа, предоставляющая доступ к множественным AI моделям и инструментам для различных бизнес-потребностей."
+        },
+        features: {
+          en: ["Multiple AI models access", "Subscription-based service", "Centralized AI platform", "Business AI tools"],
+          ru: ["Доступ к множественным AI моделям", "Подписочный сервис", "Централизованная AI платформа", "Бизнес AI инструменты"]
+        },
+        tech: ["React", "TypeScript"]
+      },
+      monotalk: {
+        title: { en: "Mono Talk", ru: "Mono Talk" },
+        description: {
+          en: "A modern video communication service with built-in AI for business and analytics. Advanced video conferencing platform designed for professional use with intelligent features.",
+          ru: "Современный сервис видеосвязи со встроенным ИИ для бизнеса и аналитики. Продвинутая платформа видеоконференций, разработанная для профессионального использования с интеллектуальными функциями."
+        },
+        features: {
+          en: ["AI-powered video calls", "Business analytics", "Smart meeting insights", "Professional conferencing"],
+          ru: ["Видеозвонки с поддержкой ИИ", "Бизнес-аналитика", "Умная аналитика встреч", "Профессиональные конференции"]
+        },
+        tech: ["React", "TypeScript"]
+      },
+      termobot: {
+        title: { en: "TermoBot", ru: "TermoBot" },
+        description: {
+          en: "Corporate website of Termodom construction holding company. Comprehensive construction business platform showcasing services, projects and company expertise in the building industry.",
+          ru: "Корпоративный сайт строительного холдинга Термодом. Комплексная платформа строительного бизнеса, демонстрирующая услуги, проекты и экспертизу компании в строительной индустрии."
+        },
+        features: {
+          en: ["Construction services showcase", "Project portfolio", "Corporate information", "Industry expertise display"],
+          ru: ["Демонстрация строительных услуг", "Портфолио проектов", "Корпоративная информация", "Демонстрация отраслевой экспертизы"]
+        },
+        tech: ["JavaScript", "HTML", "CSS", "PHP", "WordPress"]
+      },
+      camper: {
+        title: { en: "The Camper That Built Jack", ru: "Кемпер, который построил Джека" },
+        description: {
+          en: "Business website for camper sales with unique design and customer-focused features. Specialized e-commerce platform for recreational vehicle sales and services.",
+          ru: "Бизнес-сайт по продаже кемперов с уникальным дизайном и функциями, ориентированными на клиентов. Специализированная e-commerce платформа для продажи и обслуживания домов на колесах."
+        },
+        features: {
+          en: ["Camper catalog", "Sales platform", "Customer services", "Vehicle customization"],
+          ru: ["Каталог кемперов", "Платформа продаж", "Клиентские услуги", "Кастомизация транспорта"]
+        },
+        tech: ["JavaScript", "PHP", "WordPress"]
+      },
+      itab: {
+        title: { en: "iTAB", ru: "iTAB" },
+        description: {
+          en: "Online health hypermarket specializing in dietary supplements sales. Comprehensive e-commerce platform for health and wellness products with extensive product catalog and customer support.",
+          ru: "Онлайн гипермаркет здоровья, специализирующийся на продаже БАДов. Комплексная e-commerce платформа для товаров здоровья и велнеса с обширным каталогом продукции и поддержкой клиентов."
+        },
+        features: {
+          en: ["Health products catalog", "E-commerce platform", "Customer support", "Wellness solutions"],
+          ru: ["Каталог товаров для здоровья", "E-commerce платформа", "Поддержка клиентов", "Решения для велнеса"]
+        },
+        tech: ["JavaScript", "PHP"]
+      }
+    };
+
+    // Функции для модальных окон
+    function openProjectModal(projectId) {
+      const project = projectData[projectId];
+      const isRussian = localStorage.getItem('language') === 'ru';
+      const lang = isRussian ? 'ru' : 'ru'; // По умолчанию русский язык
+      
+      const modalContent = document.getElementById('modalContent');
+      modalContent.innerHTML = `
+        <h2>${project.title[lang]}</h2>
+        <p class="project-description">${project.description[lang]}</p>
+        <div class="project-features">
+          <h3>Ключевые функции:</h3>
+          <ul>
+            ${project.features[lang].map(feature => `<li>${feature}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="project-tech">
+          <h3>Технологии:</h3>
+          <div class="tech-tags">
+            ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('projectModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      document.getElementById('projectModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Закрытие модального окна при клике вне его
+    window.onclick = function(event) {
+      const modal = document.getElementById('projectModal');
+      if (event.target === modal) {
+        closeProjectModal();
+      }
     }
 
     animateSquare();

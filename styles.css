@@ -400,6 +400,175 @@ a {
   transition: all 0.3s ease;
 }
 
+.project-details-btn {
+  padding: 10px 30px;
+  border: 2px solid var(--accent-color);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.project-details-btn:hover,
+.project-links a:hover {
+  background: var(--accent-color);
+  color: var(--main-bg);
+  transform: translateY(-2px);
+}
+
+/* ========================================================================
+   Стили модальных окон
+======================================================================== */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: var(--main-bg);
+  margin: 5% auto;
+  padding: 30px;
+  border: 2px solid var(--accent-color);
+  border-radius: 15px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  animation: modalSlideIn 0.3s ease;
+  box-shadow: 0 0 30px rgba(24, 144, 255, 0.3);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close {
+  color: var(--text-color);
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: var(--accent-color);
+}
+
+.modal-content h2 {
+  color: var(--accent-color);
+  margin-bottom: 20px;
+  font-size: 2.2em;
+}
+
+.project-description {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: var(--text-color);
+}
+
+.project-features,
+.project-tech {
+  margin-bottom: 25px;
+}
+
+.project-features h3,
+.project-tech h3 {
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  font-size: 1.4em;
+}
+
+.project-features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project-features li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  padding-left: 20px;
+}
+
+.project-features li::before {
+  content: "▶";
+  color: var(--accent-color);
+  position: absolute;
+  left: 0;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-tag {
+  padding: 8px 16px;
+  background: rgba(24, 144, 255, 0.2);
+  border: 1px solid var(--accent-color);
+  border-radius: 20px;
+  font-size: 0.9em;
+  color: var(--text-color);
+}
+
+/* Мобильная адаптация модальных окон */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+    padding: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  
+  .modal-content h2 {
+    font-size: 1.8em;
+  }
+  
+  .project-description {
+    font-size: 1em;
+  }
+  
+  .project-features h3,
+  .project-tech h3 {
+    font-size: 1.2em;
+  }
+  
+  .project-details-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+  
+  .tech-tags {
+    gap: 8px;
+  }
+  
+  .tech-tag {
+    padding: 6px 12px;
+    font-size: 0.8em;
+  }
+}
+
 /* ========================================================================
    Стили хедера и навигации
 ======================================================================== */
@@ -998,6 +1167,11 @@ body.theme-blue .change-mood {
   border-color: var(--accent-color);
   color: var(--accent-color);
   background: rgba(24, 144, 255, 0.1);
+}
+
+body.theme-blue .change-mood:hover {
+  background: var(--accent-color);
+  color: var(--main-bg);
 }
 
 body.theme-blue .change-mood:hover {
