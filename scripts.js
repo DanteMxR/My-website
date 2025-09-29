@@ -87,14 +87,31 @@ translateBtn.addEventListener('click', toggleLanguage);
 
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader-container');
-    const mainContent = document.getElementById('main-content');
     const header = document.querySelector('header');
-
-    setTimeout(() => {
+    
+    // Set a minimum display time to ensure smooth transition
+    const minimumDisplayTime = 1800;
+    const startTime = Date.now();
+    
+    // Function to hide loader
+    const hideLoader = () => {
         header.classList.remove('hidden');
         loader.style.display = 'none';
-        mainContent.style.display = 'block';
-    }, 3000);
+    };
+    
+    // Check if minimum time has passed
+    const checkTime = () => {
+        const elapsedTime = Date.now() - startTime;
+        if (elapsedTime >= minimumDisplayTime) {
+            hideLoader();
+        } else {
+            // Wait for remaining time
+            setTimeout(hideLoader, minimumDisplayTime - elapsedTime);
+        }
+    };
+    
+    // Start checking
+    checkTime();
 });
 
 // Анимация header при прокрутке
