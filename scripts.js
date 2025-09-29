@@ -108,24 +108,64 @@ window.addEventListener('scroll', () => {
         : 'translateY(0)';
     lastScrollTop = currentScroll;
 });
-const glitchText = document.querySelector('.pixel-glitch');
-        let isGlitching = false;
 
-        glitchText.addEventListener('mousemove', (e) => {
-            if (!isGlitching) {
-                isGlitching = true;
-                const baseX = e.clientX / window.innerWidth;
-                const baseY = e.clientY / window.innerHeight;
-                
-                glitchText.style.textShadow = `
-                    ${Math.random() * 4 - 2}px ${Math.random() * 4 - 2}px rgba(255,0,255,0.7),
-                    ${Math.random() * 4 - 2}px ${Math.random() * 4 - 2}px rgba(0,255,255,0.7)
-                `;
-                
-                setTimeout(() => {
-                    glitchText.style.textShadow = '';
-                    isGlitching = false;
-                }, 50);
+const glitchText = document.querySelector('.pixel-glitch');
+let isGlitching = false;
+
+glitchText.addEventListener('mousemove', (e) => {
+    if (!isGlitching) {
+        isGlitching = true;
+        const baseX = e.clientX / window.innerWidth;
+        const baseY = e.clientY / window.innerHeight;
+        
+        glitchText.style.textShadow = `
+            ${Math.random() * 4 - 2}px ${Math.random() * 4 - 2}px rgba(255,0,255,0.7),
+            ${Math.random() * 4 - 2}px ${Math.random() * 4 - 2}px rgba(0,255,255,0.7)
+        `;
+        
+        setTimeout(() => {
+            glitchText.style.textShadow = '';
+            isGlitching = false;
+        }, 50);
+    }
+});
+
+// Анимации при прокрутке
+document.addEventListener('DOMContentLoaded', function() {
+    // Получаем все элементы, которые должны анимироваться
+    const animatedElements = document.querySelectorAll(
+        '.fade-in-up, .fade-in-down, .fade-in-left, .fade-in-right, .fade-in, .slide-in-up, .scale-in'
+    );
+    
+    // Создаем наблюдатель за пересечением
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Добавляем класс animate к элементу, когда он попадает в поле зрения
+                entry.target.classList.add('animate');
             }
         });
+    }, {
+        threshold: 0.1, // Запускать анимацию, когда 10% элемента видно
+        rootMargin: '0px 0px -50px 0px' // Немного расширяем область срабатывания
+    });
+    
+    // Наблюдаем за каждым анимированным элементом
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+    
+    // Дополнительные анимации для карточек навыков при наведении
+    const skillCards = document.querySelectorAll('.skill-card');
+    skillCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+            card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3)';
+        });
         
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = 'none';
+        });
+    });
+});
